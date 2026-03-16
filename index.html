@@ -114,39 +114,36 @@ function searchResult(){
 
 let roll=document.getElementById("roll").value.trim();
 
-let s = students.find(x => String(x.roll).trim() === roll);
+let s = students.find(x => x.roll == roll);
 
 if(!s){
 document.getElementById("result").innerHTML="<h3>Result Not Found</h3>";
 return;
 }
 
-}
-
 let grandTotal =
-s.eng_w_total+
-s.urdu_w_total+
-s.math_total+
-s.gk_total+
-s.urdu_r_total+
-s.eng_r_total+
-s.drawing_total+
-s.isl_total+
-s.poem_total;
+Number(s.eng_w_total) +
+Number(s.urdu_w_total) +
+Number(s.math_total) +
+Number(s.gk_total) +
+Number(s.urdu_r_total) +
+Number(s.eng_r_total) +
+Number(s.drawing_total) +
+Number(s.isl_total) +
+Number(s.poem_total);
 
 let grandObt =
-s.eng_w_obt+
-s.urdu_w_obt+
-s.math_obt+
-s.gk_obt+
-s.urdu_r_obt+
-s.eng_r_obt+
-s.drawing_obt+
-s.isl_obt+
-s.poem_obt;
+Number(s.eng_w_obt) +
+Number(s.urdu_w_obt) +
+Number(s.math_obt) +
+Number(s.gk_obt) +
+Number(s.urdu_r_obt) +
+Number(s.eng_r_obt) +
+Number(s.drawing_obt) +
+Number(s.isl_obt) +
+Number(s.poem_obt);
 
-document.getElementById("result").innerHTML=`
-
+document.getElementById("result").innerHTML = `
 <div class="card">
 
 <img src="photos/${s.photo}" class="student-photo">
@@ -157,35 +154,8 @@ document.getElementById("result").innerHTML=`
 <p><b>Class:</b> ${s.class}</p>
 <p><b>Date of Birth:</b> ${s.dob}</p>
 
-<table>
-
-<tr>
-<th>Subject</th>
-<th>Total</th>
-<th>Obtained</th>
-</tr>
-
-<tr><td>English Writing</td><td>${s.eng_w_total}</td><td>${s.eng_w_obt}</td></tr>
-<tr><td>Urdu Writing</td><td>${s.urdu_w_total}</td><td>${s.urdu_w_obt}</td></tr>
-<tr><td>Maths</td><td>${s.math_total}</td><td>${s.math_obt}</td></tr>
-<tr><td>GK</td><td>${s.gk_total}</td><td>${s.gk_obt}</td></tr>
-<tr><td>Urdu Reading</td><td>${s.urdu_r_total}</td><td>${s.urdu_r_obt}</td></tr>
-<tr><td>English Reading</td><td>${s.eng_r_total}</td><td>${s.eng_r_obt}</td></tr>
-<tr><td>Drawing</td><td>${s.drawing_total}</td><td>${s.drawing_obt}</td></tr>
-<tr><td>Islamiyat/Naazra</td><td>${s.isl_total}</td><td>${s.isl_obt}</td></tr>
-<tr><td>Poems/Sensorial</td><td>${s.poem_total}</td><td>${s.poem_obt}</td></tr>
-
-<tr class="total">
-
-<td>Grand Total</td>
-
-<td>${grandTotal}</td>
-
-<td>${grandObt}</td>
-
-</tr>
-
-</table>
+<h3>Grand Total: ${grandTotal}</h3>
+<h3>Obtained: ${grandObt}</h3>
 
 </div>
 `;
