@@ -53,22 +53,6 @@ width:120px;
 border-radius:10px;
 }
 
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:20px;
-}
-
-th,td{
-border:1px solid #ccc;
-padding:8px;
-}
-
-th{
-background:#003366;
-color:white;
-}
-
 .total{
 font-weight:bold;
 background:#f2f2f2;
@@ -143,7 +127,42 @@ Number(s.drawing_obt) +
 Number(s.isl_obt) +
 Number(s.poem_obt);
 
+let percentage = (grandObt / grandTotal) * 100;
+
+let grade="";
+let remarks="";
+
+if (percentage >= 95){
+grade="A+";
+remarks="Fabulous, Excellent! Congratulations, student promoted to next class.";
+}
+else if (percentage >= 90){
+grade="A";
+remarks="Excellent! Congratulations, student promoted to next class.";
+}
+else if (percentage >= 85){
+grade="B+";
+remarks="Very Good! Congratulations, student promoted to next class.";
+}
+else if (percentage >= 80){
+grade="B";
+remarks="Very Good! Congratulations, student promoted to next class.";
+}
+else if (percentage >= 70){
+grade="C";
+remarks="Good! Student promoted to next class.";
+}
+else if (percentage >= 40){
+grade="U";
+remarks="Pass! Student promoted to next class.";
+}
+else{
+grade="F";
+remarks="Fail.";
+}
+
 document.getElementById("result").innerHTML = `
+
 <div class="card">
 
 <img src="photos/${s.photo}" class="student-photo">
@@ -156,6 +175,10 @@ document.getElementById("result").innerHTML = `
 
 <h3>Grand Total: ${grandTotal}</h3>
 <h3>Obtained: ${grandObt}</h3>
+<h3>Percentage: ${percentage.toFixed(2)}%</h3>
+<h3>Grade: ${grade}</h3>
+
+<p><b>Remarks:</b> ${remarks}</p>
 
 </div>
 `;
